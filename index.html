@@ -1,0 +1,710 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OWN YOUR BEAUTY - Workshop Makeup cùng Yến Juhee - 299.000đ</title>
+    <meta name="description" content="Workshop makeup 2.5 giờ trực tiếp cùng Makeup Artist Yến Juhee. Hiểu gương mặt, chọn mỹ phẩm đúng cách, tự tin makeup mỗi ngày. Chủ Nhật 16/8 tại AQUARIA.">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="OWN YOUR BEAUTY - Workshop Makeup Tôn Vinh Nét Đẹp Riêng">
+    <meta property="og:description" content="Makeup không phải để trở thành một người khác, mà để tôn lên nét đẹp vốn có của bạn. Cùng Makeup Artist Yến Juhee - Chủ Nhật 16/8, AQUARIA.">
+    <meta property="og:type" content="website">
+
+    <!-- Google Fonts: Vietnamese Friendly -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&family=Noto+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        dark: '#FFF8FB',
+                        surface: '#FDEEF3',
+                        primary: '#DB2777',
+                        secondary: '#111827',
+                        urgent: '#B45309',
+                        ink: '#1F2937',
+                        lightbg: '#FFFFFF'
+                    },
+                    fontFamily: {
+                        heading: ['Be Vietnam Pro', 'sans-serif'],
+                        body: ['Noto Sans', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            font-family: 'Noto Sans', sans-serif;
+            background-color: #FFF8FB;
+            color: #1F2937;
+        }
+        h1, h2, h3, h4, h5, h6 { font-family: 'Be Vietnam Pro', sans-serif; }
+
+        /* Countdown Timer */
+        .countdown-box {
+            background: #FFFFFF;
+            border: 2px solid #DB2777;
+            border-radius: 12px;
+            padding: 1.25rem;
+            min-width: 90px;
+            text-align: center;
+            box-shadow: 0 0 25px rgba(219, 39, 119, 0.15);
+            transition: all 0.3s ease;
+        }
+        .countdown-box:hover { transform: translateY(-4px); box-shadow: 0 0 35px rgba(17, 24, 39, 0.2); }
+        .countdown-number {
+            font-size: 2.5rem; font-weight: 800; line-height: 1; display: block;
+            background: linear-gradient(135deg, #DB2777 0%, #111827 100%);
+            -webkit-background-clip: text; background-clip: text; color: transparent;
+        }
+        .countdown-label { font-size: 0.8rem; font-weight: 500; color: #6B7280; text-transform: uppercase; margin-top: 0.5rem; }
+
+        /* Timeline */
+        .timeline-item { position: relative; padding-left: 3rem; padding-bottom: 2rem; }
+        .timeline-item::before {
+            content: ''; position: absolute; left: 0.875rem; top: 2rem; bottom: 0; width: 2px;
+            background: linear-gradient(180deg, #DB2777 0%, transparent 100%);
+        }
+        .timeline-item:last-child::before { display: none; }
+        .timeline-dot {
+            position: absolute; left: 0; top: 0.4rem; width: 2rem; height: 2rem;
+            background: linear-gradient(135deg, #DB2777 0%, #111827 100%);
+            border-radius: 50%; display: flex; align-items: center; justify-content: center;
+            font-weight: 700; font-size: 0.75rem; color: #fff; border: 3px solid #FFF8FB;
+            box-shadow: 0 0 0 2px #DB2777;
+        }
+
+        /* Cards */
+        .card {
+            background: rgba(255, 255, 255, 0.85); border: 1px solid rgba(219, 39, 119, 0.15); border-radius: 16px; padding: 2rem;
+            transition: all 0.3s ease; box-shadow: 0 4px 20px rgba(17,24,39,0.06);
+        }
+        .card:hover { transform: translateY(-4px); box-shadow: 0 12px 35px rgba(219,39,119,0.15); border-color: #DB2777; }
+
+        /* FAQ */
+        .faq-item { border-bottom: 1px solid rgba(219, 39, 119, 0.15); }
+        .faq-question {
+            cursor: pointer; padding: 1.25rem 0; display: flex; justify-content: space-between;
+            align-items: center; font-weight: 600; font-size: 1.05rem; color: #1F2937; transition: color 0.3s ease;
+        }
+        .faq-question:hover { color: #DB2777; }
+        .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.3s ease, padding 0.3s ease; color: #4B5563; line-height: 1.75; }
+        .faq-item.active .faq-answer { max-height: 500px; padding-bottom: 1.25rem; }
+        .faq-icon { transition: transform 0.3s ease; color: #DB2777; }
+        .faq-item.active .faq-icon { transform: rotate(180deg); }
+
+        @keyframes pulse {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(219, 39, 119, 0.5); }
+            50% { box-shadow: 0 0 0 14px rgba(219, 39, 119, 0); }
+        }
+        .btn-pulse { animation: pulse 2s infinite; }
+
+        @keyframes blink { 0%, 50%, 100% { opacity: 1; } 25%, 75% { opacity: 0.6; } }
+        .urgency-blink { animation: blink 2s infinite; }
+
+        html { scroll-behavior: smooth; }
+
+        .date-badge {
+            background: linear-gradient(135deg, #DB2777 0%, #111827 100%);
+            padding: 0.4rem 1.25rem; border-radius: 50px; font-weight: 700; font-size: 0.85rem;
+            color: #fff; display: inline-block;
+        }
+        .check-icon {
+            display: inline-flex; align-items: center; justify-content: center; width: 24px; height: 24px;
+            background: linear-gradient(135deg, #DB2777 0%, #111827 100%);
+            border-radius: 50%; color: #fff; font-weight: 700; flex-shrink: 0;
+        }
+        .cta-gradient {
+            background: linear-gradient(135deg, #DB2777 0%, #111827 100%);
+        }
+
+        /* Inputs */
+        .field {
+            width: 100%; padding: 0.75rem 1rem; background: #FFFFFF; border: 1px solid rgba(219,39,119,0.3);
+            border-radius: 0.5rem; color: #1F2937;
+        }
+        .field:focus { outline: none; border-color: #DB2777; box-shadow: 0 0 0 2px rgba(219,39,119,0.25); }
+        .field::placeholder { color: #9CA3AF; }
+
+        /* Ambient glow blobs */
+        .glow-blob { position: absolute; border-radius: 9999px; filter: blur(50px); opacity: 0.15; pointer-events: none; }
+    </style>
+</head>
+<body>
+
+    <!-- SECTION: Navbar -->
+    <nav class="sticky top-0 z-50 bg-dark/95 backdrop-blur border-b border-black/10 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <div class="flex items-center space-x-4">
+                    <div class="text-xl md:text-2xl font-800 text-primary">💄 Yến Juhee Makeup</div>
+                    <div class="hidden md:block">
+                        <span class="date-badge">16/8 · AQUARIA</span>
+                    </div>
+                </div>
+                <div class="flex items-center space-x-6">
+                    <a href="#agenda" class="hidden md:inline-block text-ink hover:text-primary transition font-medium">Chương Trình</a>
+                    <a href="#faq" class="hidden md:inline-block text-ink hover:text-primary transition font-medium">FAQ</a>
+                    <a href="#register" class="cta-gradient hover:opacity-90 text-white font-bold px-6 py-3 rounded-full transition transform hover:scale-105 btn-pulse">
+                        Đăng Ký Ngay
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- SECTION: Hero -->
+    <section class="relative py-16 md:py-24 bg-dark overflow-hidden">
+        <div class="glow-blob bg-primary w-96 h-96 -top-20 -left-20"></div>
+        <div class="glow-blob bg-secondary w-96 h-96 top-40 -right-20"></div>
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center">
+                <div class="inline-block mb-6">
+                    <span class="bg-urgent text-white px-6 py-2 rounded-full text-sm font-bold uppercase tracking-wide urgency-blink">
+                        Chỉ Còn 1 Buổi Duy Nhất — 16/8
+                    </span>
+                </div>
+
+                <h1 class="text-3xl md:text-5xl lg:text-6xl font-800 mb-6 leading-tight text-ink">
+                    OWN YOUR BEAUTY
+                </h1>
+
+                <p class="text-lg md:text-xl text-neutral-700 mb-8 max-w-2xl mx-auto italic">
+                    "Makeup không phải để trở thành một người khác, mà để tôn lên nét đẹp vốn có của bạn."
+                </p>
+
+                <div class="flex flex-wrap items-center justify-center gap-4 text-base mb-12">
+                    <div class="flex items-center space-x-2 bg-surface/70 px-4 py-2 rounded-full border border-black/10 shadow-sm">
+                        <svg class="w-5 h-5 text-primary" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clip-rule="evenodd"/></svg>
+                        <span class="font-semibold">Chủ Nhật, 16/8/2026</span>
+                    </div>
+                    <div class="flex items-center space-x-2 bg-surface/70 px-4 py-2 rounded-full border border-black/10 shadow-sm">
+                        <svg class="w-5 h-5 text-primary" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clip-rule="evenodd"/></svg>
+                        <span class="font-semibold">9h00 – 11h30</span>
+                    </div>
+                    <div class="flex items-center space-x-2 bg-surface/70 px-4 py-2 rounded-full border border-black/10 shadow-sm">
+                        <svg class="w-5 h-5 text-primary" fill="currentColor" viewBox="0 0 20 20"><path d="M2 6a2 2 0 012-2h6a2 2 0 012 2v8a2 2 0 01-2 2H4a2 2 0 01-2-2V6z"/><path d="M12.5 8.379l4.157-2.078A1 1 0 0118 7.19v5.62a1 1 0 01-1.343.938L12.5 11.62V8.379z"/></svg>
+                        <span class="font-semibold">AQUARIA, 29 Lê Đức Thọ</span>
+                    </div>
+                </div>
+
+                <!-- Live Countdown Timer -->
+                <div class="mb-12">
+                    <h3 class="text-xl font-700 mb-6 text-primary">Workshop Bắt Đầu Sau</h3>
+                    <div class="flex justify-center items-center space-x-3 md:space-x-6 flex-wrap gap-3">
+                        <div class="countdown-box">
+                            <span id="days" class="countdown-number">00</span>
+                            <span class="countdown-label">Ngày</span>
+                        </div>
+                        <div class="countdown-box">
+                            <span id="hours" class="countdown-number">00</span>
+                            <span class="countdown-label">Giờ</span>
+                        </div>
+                        <div class="countdown-box">
+                            <span id="minutes" class="countdown-number">00</span>
+                            <span class="countdown-label">Phút</span>
+                        </div>
+                        <div class="countdown-box">
+                            <span id="seconds" class="countdown-number">00</span>
+                            <span class="countdown-label">Giây</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-6">
+                    <a href="#register" class="cta-gradient hover:opacity-90 text-white font-bold text-lg px-10 py-4 rounded-full transition transform hover:scale-105 btn-pulse shadow-xl">
+                        Đăng Ký Tham Gia — 299k
+                    </a>
+                    <a href="#learn-more" class="border-2 border-primary text-primary hover:bg-primary hover:text-white font-bold text-lg px-10 py-4 rounded-full transition transform hover:scale-105">
+                        Tìm Hiểu Thêm
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION: What You'll Learn -->
+    <section id="learn-more" class="py-20 bg-dark">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-800 mb-4 text-ink">Sau Workshop, Bạn Sẽ</h2>
+                <p class="text-lg text-neutral-600 max-w-2xl mx-auto">4 điều bạn nhận được sau 2.5 giờ học trực tiếp cùng Yến Juhee</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="card">
+                    <div class="flex items-start space-x-4">
+                        <div class="check-icon text-lg">✓</div>
+                        <div>
+                            <h3 class="text-lg font-700 mb-2 text-primary">Hiểu Gương Mặt Của Chính Mình</h3>
+                            <p class="text-neutral-700 leading-relaxed">Nhận diện đường nét, dáng mặt riêng để biết mình hợp với phong cách makeup nào</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="flex items-start space-x-4">
+                        <div class="check-icon text-lg">✓</div>
+                        <div>
+                            <h3 class="text-lg font-700 mb-2 text-primary">Chọn & Dùng Mỹ Phẩm Đúng Cách</h3>
+                            <p class="text-neutral-700 leading-relaxed">Biết cách chọn tone nền, sản phẩm phù hợp làn da và cách sử dụng hiệu quả</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="flex items-start space-x-4">
+                        <div class="check-icon text-lg">✓</div>
+                        <div>
+                            <h3 class="text-lg font-700 mb-2 text-primary">Tự Thực Hiện Layout Makeup Cơ Bản</h3>
+                            <p class="text-neutral-700 leading-relaxed">Thực hành trực tiếp một layout makeup hoàn chỉnh dưới sự hướng dẫn của chuyên gia</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="flex items-start space-x-4">
+                        <div class="check-icon text-lg">✓</div>
+                        <div>
+                            <h3 class="text-lg font-700 mb-2 text-primary">Tự Tin Makeup Đẹp Mỗi Ngày</h3>
+                            <p class="text-neutral-700 leading-relaxed">Áp dụng ngay những gì học được để tự trang điểm tự tin mỗi ngày</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION: Agenda -->
+    <section id="agenda" class="py-20 bg-surface">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-800 mb-4 text-ink">Lịch Trình Buổi Workshop</h2>
+                <p class="text-lg text-neutral-600">2.5 giờ học trực tiếp, đi từ hiểu bản thân đến thực hành makeup</p>
+            </div>
+
+            <div class="space-y-0">
+                <div class="timeline-item">
+                    <div class="timeline-dot">1</div>
+                    <div class="card">
+                        <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-2">
+                            <h3 class="text-xl font-700 text-primary">Chào Đón & Giới Thiệu</h3>
+                            <span class="text-base font-600 text-neutral-600">9h00 – 9h15</span>
+                        </div>
+                        <p class="text-neutral-700">Làm quen và giới thiệu tinh thần "Own Your Beauty" cùng mục tiêu buổi học</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot">2</div>
+                    <div class="card">
+                        <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-2">
+                            <h3 class="text-xl font-700 text-primary">Hiểu Gương Mặt Của Chính Mình</h3>
+                            <span class="text-base font-600 text-neutral-600">9h15 – 9h45</span>
+                        </div>
+                        <p class="text-neutral-700">Phân tích dáng mặt, đường nét riêng cùng Makeup Artist Yến Juhee</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot">☕</div>
+                    <div class="card" style="background:rgba(219,39,119,0.05);">
+                        <div class="flex flex-col md:flex-row md:items-center md:justify-between">
+                            <h3 class="text-lg font-700 text-primary">Giải Lao</h3>
+                            <span class="text-base font-600 text-neutral-600">9h45 – 9h55</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot">3</div>
+                    <div class="card">
+                        <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-2">
+                            <h3 class="text-xl font-700 text-primary">Chọn & Sử Dụng Mỹ Phẩm Đúng Cách</h3>
+                            <span class="text-base font-600 text-neutral-600">9h55 – 10h25</span>
+                        </div>
+                        <p class="text-neutral-700">Hướng dẫn chọn tone nền, sản phẩm phù hợp làn da và cách sử dụng hiệu quả</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot">4</div>
+                    <div class="card">
+                        <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-2">
+                            <h3 class="text-xl font-700 text-primary">Thực Hành Layout Makeup Cơ Bản</h3>
+                            <span class="text-base font-600 text-neutral-600">10h25 – 11h10</span>
+                        </div>
+                        <p class="text-neutral-700">Tự tay thực hiện một layout makeup hoàn chỉnh dưới sự hướng dẫn trực tiếp</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot">5</div>
+                    <div class="card">
+                        <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-2">
+                            <h3 class="text-xl font-700 text-primary">Hỏi Đáp Trực Tiếp</h3>
+                            <span class="text-base font-600 text-neutral-600">11h10 – 11h30</span>
+                        </div>
+                        <p class="text-sm text-secondary font-600">Q&A - Giải đáp thắc mắc và tổng kết buổi học</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION: Who Should Attend -->
+    <section class="py-20 bg-dark">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-800 mb-4 text-ink">Workshop Này Dành Cho Ai?</h2>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="card text-center">
+                    <div class="w-16 h-16 cta-gradient rounded-full flex items-center justify-center mx-auto mb-6">
+                        <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z"/></svg>
+                    </div>
+                    <h3 class="text-lg font-700 mb-2 text-primary">Người Mới Bắt Đầu</h3>
+                    <p class="text-neutral-700 text-sm">Chưa từng makeup, muốn học từ những bước cơ bản nhất</p>
+                </div>
+                <div class="card text-center">
+                    <div class="w-16 h-16 cta-gradient rounded-full flex items-center justify-center mx-auto mb-6">
+                        <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24"><path d="M20 6h-4V4c0-1.11-.89-2-2-2h-4c-1.11 0-2 .89-2 2v2H4c-1.11 0-1.99.89-1.99 2L2 19c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V8c0-1.11-.89-2-2-2zm-6 0h-4V4h4v2z"/></svg>
+                    </div>
+                    <h3 class="text-lg font-700 mb-2 text-primary">Yêu Thích Làm Đẹp Mỗi Ngày</h3>
+                    <p class="text-neutral-700 text-sm">Muốn tự trang điểm tự tin mà không cần ra tiệm</p>
+                </div>
+                <div class="card text-center">
+                    <div class="w-16 h-16 cta-gradient rounded-full flex items-center justify-center mx-auto mb-6">
+                        <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24"><path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8a3 3 0 100 6 3 3 0 000-6z"/></svg>
+                    </div>
+                    <h3 class="text-lg font-700 mb-2 text-primary">Chuẩn Bị Cho Sự Kiện</h3>
+                    <p class="text-neutral-700 text-sm">Cần biết cách makeup gọn nhẹ, tự tin cho những dịp đặc biệt</p>
+                </div>
+                <div class="card text-center">
+                    <div class="w-16 h-16 cta-gradient rounded-full flex items-center justify-center mx-auto mb-6">
+                        <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24"><path d="M19.5 12c0-.23-.01-.45-.03-.68l1.86-1.41c.4-.3.51-.86.26-1.3l-1.87-3.23c-.25-.44-.79-.62-1.25-.42l-2.15.91c-.37-.26-.76-.49-1.17-.68l-.29-2.31C14.8 2.38 14.37 2 13.87 2h-3.73c-.5 0-.93.38-.96.88l-.29 2.31c-.41.19-.8.42-1.17.68l-2.15-.91c-.46-.2-1-.02-1.25.42L2.41 8.62c-.25.44-.14.99.26 1.3l1.86 1.41c-.02.22-.03.44-.03.67s.01.45.03.68l-1.86 1.41c-.4.3-.51.86-.26 1.3l1.87 3.23c.25.44.79.62 1.25.42l2.15-.91c.37.26.76.49 1.17.68l.29 2.31c.03.5.46.88.96.88h3.73c.5 0 .93-.38.96-.88l.29-2.31c.41-.19.8-.42 1.17-.68l2.15.91c.46.2 1 .02 1.25-.42l1.87-3.23c.25-.44.14-.99-.26-1.3l-1.86-1.41c.03-.23.04-.45.04-.68zm-7.5 2c-1.66 0-3-1.34-3-3s1.34-3 3-3 3 1.34 3 3-1.34 3-3 3z"/></svg>
+                    </div>
+                    <h3 class="text-lg font-700 mb-2 text-primary">Muốn Hiểu Gương Mặt Mình Hơn</h3>
+                    <p class="text-neutral-700 text-sm">Tìm phương pháp chọn mỹ phẩm và layout makeup phù hợp riêng</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION: Quick Facts -->
+    <section class="py-20 bg-surface">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-800 mb-4 text-ink">Thông Tin Nhanh</h2>
+            </div>
+
+            <div class="grid md:grid-cols-4 gap-8">
+                <div class="text-center">
+                    <div class="text-5xl md:text-6xl font-800 text-primary mb-3">2.5 Giờ</div>
+                    <p class="text-lg text-neutral-600 font-600">Học & Thực Hành Trực Tiếp</p>
+                </div>
+                <div class="text-center">
+                    <div class="text-5xl md:text-6xl font-800 text-primary mb-3">1</div>
+                    <p class="text-lg text-neutral-600 font-600">Chuyên Gia Đồng Hành: Yến Juhee</p>
+                </div>
+                <div class="text-center">
+                    <div class="text-5xl md:text-6xl font-800 text-primary mb-3">299K</div>
+                    <p class="text-lg text-neutral-600 font-600">Học Phí Trọn Gói</p>
+                </div>
+                <div class="text-center">
+                    <div class="text-5xl md:text-6xl font-800 text-primary mb-3">16/8</div>
+                    <p class="text-lg text-neutral-600 font-600">Chủ Nhật, Tại AQUARIA</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION: Why Join Now (honest urgency — no fabricated reviews/attendee counts) -->
+    <section class="py-20 bg-dark">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-800 mb-4 text-ink">Vì Sao Nên Tham Gia Ngay Bây Giờ</h2>
+                <p class="text-lg text-neutral-600 max-w-2xl mx-auto">Đăng ký sớm để không bỏ lỡ những giá trị này</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="card">
+                    <div class="w-14 h-14 cta-gradient rounded-lg flex items-center justify-center mb-6">
+                        <svg class="w-7 h-7 text-white" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clip-rule="evenodd"/></svg>
+                    </div>
+                    <h3 class="text-lg font-700 mb-2 text-primary">Học Trực Tiếp, Không Qua Video</h3>
+                    <p class="text-neutral-700 text-sm">Được chỉnh sửa, góp ý tại chỗ cùng chuyên gia thay vì tự học qua màn hình</p>
+                </div>
+                <div class="card">
+                    <div class="w-14 h-14 cta-gradient rounded-lg flex items-center justify-center mb-6">
+                        <svg class="w-7 h-7 text-white" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M18 10c0 3.866-3.582 7-8 7a8.841 8.841 0 01-4.083-.98L2 17l1.338-3.123C2.493 12.767 2 11.434 2 10c0-3.866 3.582-7 8-7s8 3.134 8 7zM7 9H5v2h2V9zm8 0h-2v2h2V9zM9 9h2v2H9V9z" clip-rule="evenodd"/></svg>
+                    </div>
+                    <h3 class="text-lg font-700 mb-2 text-primary">Lớp Học Trực Tiếp, Sát Sao</h3>
+                    <p class="text-neutral-700 text-sm">Được quan sát và góp ý riêng phù hợp với gương mặt của từng người</p>
+                </div>
+                <div class="card">
+                    <div class="w-14 h-14 cta-gradient rounded-lg flex items-center justify-center mb-6">
+                        <svg class="w-7 h-7 text-white" fill="currentColor" viewBox="0 0 24 24"><path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"/></svg>
+                    </div>
+                    <h3 class="text-lg font-700 mb-2 text-primary">Áp Dụng Được Ngay</h3>
+                    <p class="text-neutral-700 text-sm">Về nhà tự tin makeup mỗi ngày, không cần công cụ hay kỹ thuật cầu kỳ</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION: Registration + Payment -->
+    <section id="register" class="py-20 bg-surface">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-800 mb-4 text-ink">Đăng Ký Tham Dự</h2>
+                <p class="text-lg text-neutral-600">Điền thông tin bên dưới — bạn sẽ được chuyển sang trang thanh toán QR ngay sau đó</p>
+            </div>
+
+            <div class="card max-w-2xl mx-auto">
+                <form id="registrationForm" class="space-y-6">
+                    <div>
+                        <label class="block text-sm font-600 mb-2 text-ink" for="fullName">Họ và Tên <span class="text-urgent">*</span></label>
+                        <input type="text" id="fullName" name="fullName" required class="field" placeholder="Nguyễn Văn A">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-600 mb-2 text-ink" for="email">Email <span class="text-urgent">*</span></label>
+                        <input type="email" id="email" name="email" required class="field" placeholder="email@example.com">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-600 mb-2 text-ink" for="phone">Số Điện Thoại <span class="text-urgent">*</span></label>
+                        <input type="tel" id="phone" name="phone" required class="field" placeholder="0901234567">
+                    </div>
+
+                    <div class="flex items-center justify-between p-4 bg-dark border-2 border-secondary rounded-lg">
+                        <div>
+                            <div class="font-600 text-ink">Vé Workshop OWN YOUR BEAUTY</div>
+                            <div class="text-sm text-neutral-600">Tham gia trực tiếp 9h–11h30 · Thực hành cùng chuyên gia</div>
+                        </div>
+                        <div class="text-2xl font-800 text-primary">299.000đ</div>
+                    </div>
+
+                    <div class="flex items-start">
+                        <input type="checkbox" id="terms" name="terms" required class="w-5 h-5 mt-1">
+                        <label for="terms" class="ml-3 text-sm text-neutral-600">
+                            Tôi đồng ý với <a href="#" class="text-primary hover:underline">điều khoản sử dụng</a>
+                        </label>
+                    </div>
+
+                    <button type="submit" class="w-full cta-gradient hover:opacity-90 text-white font-bold text-lg py-4 rounded-full transition transform hover:scale-105 btn-pulse">
+                        Đăng Ký & Tiếp Tục Thanh Toán
+                    </button>
+                </form>
+
+                <div class="mt-6 text-center text-sm text-neutral-500">
+                    <p>🔒 Thông tin của bạn được bảo mật tuyệt đối</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION: FAQ -->
+    <section id="faq" class="py-20 bg-dark">
+        <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-800 mb-4 text-ink">Câu Hỏi Thường Gặp</h2>
+            </div>
+
+            <div class="space-y-0 bg-surface rounded-lg px-6">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Mình chưa biết gì về makeup có tham gia được không?</span>
+                        <svg class="w-5 h-5 faq-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                    </div>
+                    <div class="faq-answer">Hoàn toàn được! Workshop được thiết kế cho người mới bắt đầu, đi từ những bước cơ bản nhất về hiểu gương mặt và chọn mỹ phẩm.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Mình cần chuẩn bị/mang theo gì không?</span>
+                        <svg class="w-5 h-5 faq-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                    </div>
+                    <div class="faq-answer">Bạn mang theo bộ mỹ phẩm trang điểm cá nhân đang dùng (nếu có) để được tư vấn phù hợp. Nếu chưa có, vẫn có thể tham gia quan sát và thực hành theo hướng dẫn.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Sau khi chuyển khoản, mình xác nhận đăng ký như thế nào?</span>
+                        <svg class="w-5 h-5 faq-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                    </div>
+                    <div class="faq-answer">Vui lòng điền đầy đủ thông tin đăng ký và chuyển khoản đúng nội dung. Chúng tôi sẽ liên hệ xác nhận qua số điện thoại/Zalo 0912578489 trong vòng 24 giờ.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Địa điểm AQUARIA có chỗ để xe không?</span>
+                        <svg class="w-5 h-5 faq-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                    </div>
+                    <div class="faq-answer">Địa điểm tại 29 Lê Đức Thọ. Vui lòng liên hệ Zalo/hotline 0912578489 nếu cần hỗ trợ tìm đường trước buổi học.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Chính sách hoàn tiền như thế nào?</span>
+                        <svg class="w-5 h-5 faq-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                    </div>
+                    <div class="faq-answer">Trong trường hợp workshop bị hoãn/hủy từ phía ban tổ chức, học phí sẽ được hoàn lại 100%. Với các trường hợp khác, vui lòng liên hệ trực tiếp qua Zalo/hotline 0912578489 để được hỗ trợ.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION: Footer -->
+    <footer class="bg-surface border-t border-black/10 py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-3 gap-8 mb-8">
+                <div>
+                    <h3 class="text-xl font-800 text-primary mb-4">💄 Yến Juhee Makeup</h3>
+                    <p class="text-neutral-600 mb-4">Tôn vinh nét đẹp vốn có của bạn qua từng lớp trang điểm</p>
+                </div>
+                <div>
+                    <h4 class="text-base font-700 mb-4 text-ink">Chi Tiết Sự Kiện</h4>
+                    <ul class="space-y-2 text-neutral-600">
+                        <li>Chủ Nhật, 16/8/2026 · 9h00 – 11h30</li>
+                        <li>AQUARIA, 29 Lê Đức Thọ</li>
+                        <li>Học phí: 299.000đ</li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-base font-700 mb-4 text-ink">Liên Hệ</h4>
+                    <ul class="space-y-2 text-neutral-600">
+                        <li><a href="tel:0912578489" class="hover:text-primary transition">0912 578 489</a></li>
+                        <li><a href="https://zalo.me/0912578489" target="_blank" rel="noopener" class="hover:text-primary transition">Zalo: 0912 578 489</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-black/10 pt-8 text-center">
+                <p class="text-neutral-500 text-sm">&copy; <span id="year"></span> Yến Juhee Makeup. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // Paste your Google Apps Script Web App URL here — see
+        // skills/landing-page-builder/references/google-sheets-registration-integration.md for the full setup guide.
+        const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxz7c30U81WClvjlz6bCozeRnW4okB2_DXX9X4wZzJL2NH9lIvaZEozUhRwdzagePgT/exec';
+        // Sent with every registration so multiple courses can share one Sheet and still be told apart.
+        const COURSE_NAME = 'OWN YOUR BEAUTY';
+
+        // Affiliate tracking: capture ?ref=CODE from the URL (any value works, no pre-registration
+        // needed), remember it in localStorage so it survives page navigation, and send it along
+        // with the registration so it shows up as a column in the Sheet for commission payout.
+        function getRefCode() {
+            const refFromUrl = new URLSearchParams(window.location.search).get('ref');
+            if (refFromUrl) {
+                localStorage.setItem('refCode', refFromUrl);
+                return refFromUrl;
+            }
+            return localStorage.getItem('refCode') || '';
+        }
+        const REF_CODE = getRefCode();
+
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        // Live Countdown Timer
+        function updateCountdown() {
+            const eventDate = new Date('2026-08-16T09:00:00+07:00').getTime();
+            const now = new Date().getTime();
+            const distance = eventDate - now;
+
+            if (distance < 0) {
+                document.getElementById('days').textContent = '00';
+                document.getElementById('hours').textContent = '00';
+                document.getElementById('minutes').textContent = '00';
+                document.getElementById('seconds').textContent = '00';
+                return;
+            }
+
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            document.getElementById('days').textContent = String(days).padStart(2, '0');
+            document.getElementById('hours').textContent = String(hours).padStart(2, '0');
+            document.getElementById('minutes').textContent = String(minutes).padStart(2, '0');
+            document.getElementById('seconds').textContent = String(seconds).padStart(2, '0');
+        }
+        updateCountdown();
+        setInterval(updateCountdown, 1000);
+
+        // FAQ Accordion
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', () => {
+                const faqItem = question.parentElement;
+                const wasActive = faqItem.classList.contains('active');
+                document.querySelectorAll('.faq-item').forEach(item => item.classList.remove('active'));
+                if (!wasActive) faqItem.classList.add('active');
+            });
+        });
+
+        // Form Validation
+        document.getElementById('registrationForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const fullName = document.getElementById('fullName').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const phone = document.getElementById('phone').value.trim();
+            const terms = document.getElementById('terms').checked;
+
+            if (!fullName || !email || !phone) {
+                alert('Vui lòng điền đầy đủ thông tin bắt buộc!');
+                return;
+            }
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email)) {
+                alert('Email không hợp lệ!');
+                return;
+            }
+            const phoneRegex = /^[0-9]{10,11}$/;
+            if (!phoneRegex.test(phone)) {
+                alert('Số điện thoại không hợp lệ!');
+                return;
+            }
+            if (!terms) {
+                alert('Vui lòng đồng ý với điều khoản sử dụng!');
+                return;
+            }
+
+            // Remember the registrant so payment.html can greet them by name.
+            sessionStorage.setItem('registrant', JSON.stringify({ fullName, email, phone }));
+
+            // Send registration data to Google Sheet via Apps Script Web App.
+            // mode: 'no-cors' + text/plain header avoids a CORS preflight; Apps Script still
+            // reads the raw JSON body via e.postData.contents regardless of the header.
+            fetch(GOOGLE_SCRIPT_URL, {
+                method: 'POST',
+                mode: 'no-cors',
+                headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+                body: JSON.stringify({
+                    courseName: COURSE_NAME,
+                    fullName: fullName,
+                    email: email,
+                    phone: phone,
+                    refCode: REF_CODE,
+                    timestamp: new Date().toISOString()
+                })
+            }).catch(() => {}).finally(() => {
+                window.location.href = 'payment.html';
+            });
+        });
+
+        // Smooth Scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cảm Ơn Bạn Đã Đăng Ký! - OWN YOUR BEAUTY Workshop</title>
+    <meta name="description" content="Đăng ký thành công workshop OWN YOUR BEAUTY. Tham gia nhóm Zalo để nhận thông tin tham dự.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&family=Noto+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        dark: '#FFF8FB',
+                        surface: '#FDEEF3',
+                        primary: '#DB2777',
+                        secondary: '#111827',
+                        ink: '#1F2937'
+                    },
+                    fontFamily: {
+                        heading: ['Be Vietnam Pro', 'sans-serif'],
+                        body: ['Noto Sans', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            font-family: 'Noto Sans', sans-serif;
+            background-color: #FFF8FB;
+            color: #1F2937;
+        }
+        h1, h2, h3 { font-family: 'Be Vietnam Pro', sans-serif; }
+
+        .card {
+            background: rgba(255, 255, 255, 0.9); border: 1px solid rgba(219, 39, 119, 0.15); border-radius: 20px; padding: 2.5rem;
+            box-shadow: 0 12px 40px rgba(17,24,39,0.08);
+        }
+
+        .check-circle {
+            width: 88px; height: 88px; border-radius: 50%;
+            background: linear-gradient(135deg, #DB2777 0%, #111827 100%);
+            display: flex; align-items: center; justify-content: center;
+            box-shadow: 0 0 40px rgba(219,39,119,0.3);
+        }
+
+        .cta-gradient { background: linear-gradient(135deg, #DB2777 0%, #111827 100%); }
+
+        @keyframes pulse {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(219, 39, 119, 0.5); }
+            50% { box-shadow: 0 0 0 14px rgba(219, 39, 119, 0); }
+        }
+        .btn-pulse { animation: pulse 2s infinite; }
+
+        .glow-blob { position: absolute; border-radius: 9999px; filter: blur(50px); opacity: 0.15; pointer-events: none; }
+    </style>
+</head>
+<body class="min-h-screen flex items-center justify-center px-4 py-16 relative overflow-hidden">
+    <div class="glow-blob bg-primary w-96 h-96 -top-20 -left-20"></div>
+    <div class="glow-blob bg-secondary w-96 h-96 bottom-0 -right-20"></div>
+
+    <div class="max-w-xl w-full text-center relative z-10">
+        <div class="flex justify-center mb-8">
+            <div class="check-circle">
+                <svg class="w-12 h-12 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="3">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/>
+                </svg>
+            </div>
+        </div>
+
+        <h1 class="text-3xl md:text-4xl font-800 mb-4 text-ink">Cảm Ơn Bạn Đã Đăng Ký!</h1>
+        <p class="text-lg text-neutral-700 mb-10">
+            Cảm ơn bạn đã đăng ký và hoàn tất chuyển khoản cho workshop
+            <strong class="text-primary">"OWN YOUR BEAUTY"</strong>.
+            Chúng tôi sẽ liên hệ xác nhận qua số điện thoại/Zalo trong vòng 24 giờ.
+        </p>
+
+        <div class="card mb-8">
+            <h2 class="text-xl font-700 mb-3 text-ink">Tham Gia Nhóm Zalo Ngay</h2>
+            <p class="text-neutral-600 mb-6">Vào nhóm để nhận thông tin xác nhận, nhắc lịch và hỗ trợ trước buổi workshop 16/8.</p>
+            <a href="https://zalo.me/g/cmdhfbgytqa76ohwd0nu"
+               target="_blank" rel="noopener"
+               class="inline-block cta-gradient hover:opacity-90 text-white font-bold text-lg px-10 py-4 rounded-full transition transform hover:scale-105 btn-pulse">
+                Tham Gia Nhóm Zalo
+            </a>
+            <p class="mt-4 text-xs text-neutral-500">Cần hỗ trợ thêm? Liên hệ trực tiếp: <a href="tel:0912578489" class="text-primary hover:underline">0912 578 489</a></p>
+        </div>
+
+        <a href="index.html" class="text-neutral-500 hover:text-primary transition text-sm">← Quay lại trang chủ</a>
+    </div>
+
+</body>
+</html>
