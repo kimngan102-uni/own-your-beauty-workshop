@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đối Tác Tiếp Thị - OWN YOUR BEAUTY</title>
+    <meta name="description" content="Trở thành đối tác tiếp thị và tạo link giới thiệu riêng của bạn cho workshop OWN YOUR BEAUTY.">
+    <meta name="robots" content="noindex">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&family=Noto+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        dark: '#FFF8FB',
+                        surface: '#FDEEF3',
+                        primary: '#DB2777',
+                        secondary: '#111827',
+                        ink: '#1F2937'
+                    },
+                    fontFamily: {
+                        heading: ['Be Vietnam Pro', 'sans-serif'],
+                        body: ['Noto Sans', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            font-family: 'Noto Sans', sans-serif;
+            background-color: #FFF8FB;
+            color: #1F2937;
+        }
+        h1, h2, h3 { font-family: 'Be Vietnam Pro', sans-serif; }
+
+        .card {
+            background: rgba(255, 255, 255, 0.9); border: 1px solid rgba(219, 39, 119, 0.15); border-radius: 20px; padding: 2.5rem;
+            box-shadow: 0 12px 40px rgba(17,24,39,0.08);
+        }
+
+        .field {
+            width: 100%; padding: 0.75rem 1rem; background: #FFFFFF; border: 1px solid rgba(219,39,119,0.3);
+            border-radius: 0.5rem; color: #1F2937;
+        }
+        .field:focus { outline: none; border-color: #DB2777; box-shadow: 0 0 0 2px rgba(219,39,119,0.25); }
+        .field::placeholder { color: #9CA3AF; }
+
+        .cta-gradient { background: linear-gradient(135deg, #DB2777 0%, #111827 100%); }
+
+        .step-icon {
+            display: inline-flex; align-items: center; justify-content: center; width: 28px; height: 28px;
+            background: linear-gradient(135deg, #DB2777 0%, #111827 100%);
+            border-radius: 50%; color: #fff; font-weight: 700; font-size: 0.85rem; flex-shrink: 0;
+        }
+
+        .glow-blob { position: absolute; border-radius: 9999px; filter: blur(50px); opacity: 0.15; pointer-events: none; }
+    </style>
+</head>
+<body class="min-h-screen flex items-center justify-center px-4 py-16 relative overflow-x-hidden">
+    <div class="glow-blob bg-primary w-96 h-96 -top-20 -left-20"></div>
+    <div class="glow-blob bg-secondary w-96 h-96 bottom-0 -right-20"></div>
+
+    <!-- STEP 1: Intro -->
+    <div id="introSection" class="max-w-xl w-full text-center relative z-10">
+        <h1 class="text-2xl md:text-3xl font-800 mb-4 text-ink">Chương Trình Đối Tác Tiếp Thị</h1>
+        <p class="text-neutral-600 mb-8">
+            Giới thiệu <strong class="text-primary">OWN YOUR BEAUTY</strong> đến bạn bè, người quen
+            và nhận hoa hồng cho mỗi người đăng ký thành công qua link của bạn.
+        </p>
+
+        <div class="card text-left mb-8">
+            <ul class="space-y-4 text-neutral-700">
+                <li class="flex items-start gap-3"><span class="step-icon">1</span><span>Lấy link giới thiệu riêng của bạn</span></li>
+                <li class="flex items-start gap-3"><span class="step-icon">2</span><span>Chia sẻ link với bạn bè, người quen</span></li>
+                <li class="flex items-start gap-3"><span class="step-icon">3</span><span>Nhận hoa hồng khi có người đăng ký qua link</span></li>
+            </ul>
+        </div>
+
+        <button id="becomeAffiliateBtn" class="cta-gradient hover:opacity-90 text-white font-bold text-lg px-10 py-4 rounded-full transition transform hover:scale-105">
+            Trở Thành Đối Tác Tiếp Thị
+        </button>
+
+        <a href="index.html" class="block text-center text-neutral-500 hover:text-primary transition text-sm mt-6">← Quay lại trang chính</a>
+    </div>
+
+    <!-- STEP 2: Link Generator (hidden until Step 1 button is clicked) -->
+    <div id="formSection" class="hidden max-w-xl w-full relative z-10">
+        <div class="text-center mb-8">
+            <h1 class="text-2xl md:text-3xl font-800 mb-3 text-ink">Tạo Link Tiếp Thị Của Bạn</h1>
+            <p class="text-neutral-600">Cho workshop <strong class="text-primary">OWN YOUR BEAUTY</strong></p>
+        </div>
+
+        <div class="card">
+            <label class="block text-sm font-600 mb-2 text-ink" for="affName">Tên hoặc số điện thoại của bạn</label>
+            <p class="text-xs text-neutral-500 mb-3">Dùng làm mã giới thiệu — mỗi người đăng ký qua link của bạn sẽ được ghi kèm mã này vào danh sách để đối chiếu hoa hồng.</p>
+            <input type="text" id="affName" class="field mb-4" placeholder="Ví dụ: Nguyen Van A hoặc 0912345678">
+            <button id="generateBtn" class="w-full cta-gradient hover:opacity-90 text-white font-bold py-3 rounded-full transition transform hover:scale-105">
+                Tạo Link Của Tôi
+            </button>
+
+            <div id="resultBox" class="hidden mt-6 pt-6 border-t border-black/10">
+                <label class="block text-sm font-600 mb-2 text-ink">Link của bạn</label>
+                <div class="flex gap-2">
+                    <input type="text" id="resultLink" class="field" readonly>
+                    <button id="copyBtn" class="cta-gradient hover:opacity-90 text-white font-bold px-5 rounded-lg transition whitespace-nowrap">
+                        Copy
+                    </button>
+                </div>
+                <p id="copyFeedback" class="hidden text-sm text-primary mt-2">Đã copy vào clipboard!</p>
+                <p class="text-xs text-neutral-500 mt-4">Chia sẻ link này ở bất kỳ đâu — Facebook, Zalo, TikTok. Khi có người đăng ký qua link, hệ thống tự động ghi mã của bạn vào danh sách đăng ký trên Google Sheet để đối chiếu hoa hồng.</p>
+            </div>
+        </div>
+
+        <div class="mt-6 text-xs text-neutral-500 text-center leading-relaxed">
+            Lưu ý: hệ thống chỉ ghi nhận <span class="text-neutral-700">ai đã giới thiệu</span> người đăng ký, không tự xác nhận việc chuyển khoản đã thành công hay chưa. Ban tổ chức sẽ đối chiếu thủ công với giao dịch ngân hàng thực tế trước khi chi trả hoa hồng.
+        </div>
+
+        <a href="index.html" class="block text-center text-neutral-500 hover:text-primary transition text-sm mt-6">← Quay lại trang chính</a>
+    </div>
+
+    <script>
+        document.getElementById('becomeAffiliateBtn').addEventListener('click', () => {
+            document.getElementById('introSection').classList.add('hidden');
+            document.getElementById('formSection').classList.remove('hidden');
+        });
+
+        document.getElementById('generateBtn').addEventListener('click', () => {
+            const raw = document.getElementById('affName').value.trim();
+            if (!raw) {
+                alert('Vui lòng nhập tên hoặc số điện thoại của bạn.');
+                return;
+            }
+            const code = encodeURIComponent(raw.replace(/\s+/g, ''));
+            // Link to the site root (index.html reads ?ref= and stores it in localStorage so it
+            // survives navigation through to payment.html/thank-you.html and gets sent with the
+            // registration to the Google Sheet).
+            const link = window.location.origin + '/?ref=' + code;
+
+            const resultLink = document.getElementById('resultLink');
+            resultLink.value = link;
+            document.getElementById('resultBox').classList.remove('hidden');
+            document.getElementById('copyFeedback').classList.add('hidden');
+        });
+
+        document.getElementById('copyBtn').addEventListener('click', () => {
+            const resultLink = document.getElementById('resultLink');
+            resultLink.select();
+            navigator.clipboard.writeText(resultLink.value).then(() => {
+                const feedback = document.getElementById('copyFeedback');
+                feedback.classList.remove('hidden');
+                setTimeout(() => feedback.classList.add('hidden'), 2000);
+            });
+        });
+    </script>
+</body>
+</html>
