@@ -680,9 +680,13 @@
             // Send registration data to Google Sheet via Apps Script Web App.
             // mode: 'no-cors' + text/plain header avoids a CORS preflight; Apps Script still
             // reads the raw JSON body via e.postData.contents regardless of the header.
+            // Fire-and-forget: keepalive lets the browser finish sending this POST in the
+            // background even after we navigate away, so we never block the user waiting
+            // on an opaque no-cors response (which can hang/never resolve on some networks).
             fetch(GOOGLE_SCRIPT_URL, {
                 method: 'POST',
                 mode: 'no-cors',
+                keepalive: true,
                 headers: { 'Content-Type': 'text/plain;charset=utf-8' },
                 body: JSON.stringify({
                     courseName: COURSE_NAME,
@@ -692,9 +696,9 @@
                     refCode: REF_CODE,
                     timestamp: new Date().toISOString()
                 })
-            }).catch(() => {}).finally(() => {
-                window.location.href = 'payment.html';
-            });
+            }).catch(() => {});
+
+            window.location.href = 'payment.html';
         });
 
         // Smooth Scroll
